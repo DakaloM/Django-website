@@ -1,0 +1,25 @@
+{% extends 'events/base.html' %}
+
+{% block title %}
+
+	<title>Search</title>
+{% endblock %}
+
+{% block content %}
+	<center>
+		<h1>You searched for...</h1>
+
+		{% if search%}
+		    <table class="table table-hover table-striped table-bordered">
+				{% for event in events%}
+					
+					{{event}} <br>
+
+				{% endfor %}
+			</table>
+		{% else%}
+			you didnt search anything
+		{% endif %}
+	
+	</center>
+{% endblock %}

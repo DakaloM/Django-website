@@ -1,0 +1,33 @@
+{% extends 'events/base.html' %}
+
+{% block title %}
+
+	<title>Update Event</title>
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		
+	 	{% if user == event.manager or user.is_superuser%}
+			<h1>Update Event</h1>
+			
+			<br>
+			<form action="" method="post">
+				{% csrf_token %}
+				{{form.as_p}}
+				<br>
+				<button type="submit" value="Update" class="btn btn-secondary">Update</button>
+			</form>
+		{% else %}
+
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            	Access denied! <br>
+            	Only the event's manager can update this event
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+		{% endif %}
+
+	{% endif %}
+	
+	
+{% endblock %}
